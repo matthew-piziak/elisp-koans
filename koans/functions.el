@@ -159,8 +159,6 @@
 ;; ----
 
 
-
-
 (elisp-koans/define-test test-apply-function-with-apply
   "APPLY calls the function parameter on a list of all the remaining
    parameters"

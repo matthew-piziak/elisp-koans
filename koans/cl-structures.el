@@ -12,7 +12,7 @@
 ;;   See the License for the specific language governing permissions and
 ;;   limitations under the License.
 ;;
-;;   Adapted from google/lisp-koans:koans/cl-structures.lsp
+;;   Adapted from google/lisp-koans:koans/structures.lsp
 
 
 ;; [Common] Lisp structures encapsulate data which belongs together. They are a
