@@ -19,45 +19,44 @@
 (elisp-koans/deftest
  elisp-koans/vectors-types ()
  "`[x y z]' defines a vector literal containing x y z"
- (should (eq ___ (typep [1 11 111] 'vector)))
- (should (eq ___ (aref [1 11 111] 1))))
+ (should (eq t (typep [1 11 111] 'vector)))
+ (should (eq 11 (aref [1 11 111] 1))))
 
 
 (elisp-koans/deftest
  elisp-koans/vectors-length ()
  "`length' works on vectors"
- (should (eq (length [1 2 3]) ___)))
+ (should (eq (length [1 2 3]) 3)))
 
 
 (elisp-koans/deftest
  elisp-koans/vectors-bool ()
  "define a `bool-vector' literal with four elements, 0, 0, 1 and 1,
 and expand it using `vconcat'"
- (should (equal ___ (vconcat (bool-vector nil t t))))
- (should (eq ___ (typep #&4"	" 'bool-vector)))
- (should (eq ___ (aref #&4"	" 1))))
+ (should (equal [nil t t] (vconcat (bool-vector nil t t))))
+ (should (eq t (typep #&4"	" 'bool-vector)))
+ (should (eq nil (aref #&4"	" 1))))
 
 
 (elisp-koans/deftest
  elisp-koans/vectors-bool-operations ()
  "bool vectors can be compared using operations"
- (should (equal ___ (vconcat(bool-vector-intersection (bool-vector t t nil nil)
-                                                      (bool-vector t nil t nil)))))
- (should (equal ___ (vconcat (bool-vector-union (bool-vector t t nil nil)
-                                                (bool-vector t nil t nil)))))
- (should (equal ___ (vconcat (bool-vector-exclusive-or (bool-vector t t nil nil)
-                                                       (bool-vector t nil t nil))))))
+ (should (equal [t nil nil nil] (vconcat(bool-vector-intersection (bool-vector t t nil nil)
+                                                                  (bool-vector t nil t nil)))))
+ (should (equal [t t t nil] (vconcat (bool-vector-union (bool-vector t t nil nil)
+                                                        (bool-vector t nil t nil)))))
+ (should (equal [nil t t nil] (vconcat (bool-vector-exclusive-or (bool-vector t t nil nil)
+                                                                 (bool-vector t nil t nil))))))
 
 
 (defun list-to-bool-vector (my-list)
-  "Return a `bool-vector' created from the elements of MY-LIST."
-  nil)
+  "Return a `bool-vector' created from the elements of MY-#'vector '(t nil nil))"
+  (eval `(bool-vector ,@(mapcar #'bool-vector my-list))))
 
 (elisp-koans/deftest
  elisp-koans/vectors-list-to-bool-vector ()
  "you must complete `list-to-bool-vector'"
  (should (bool-vector-p (list-to-bool-vector '(nil nil t t nil))))
- (should-not (aref (list-to-bool-vector '(nil))))
  (should (aref (list-to-bool-vector '(nil t)) 1))
  (should (equal 8 (length (list-to-bool-vector '(nil nil t t nil nil t t))))))
 

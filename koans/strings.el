@@ -21,10 +21,10 @@
  elisp-koans/strings-double-quoted-strings ()
  "double quoted strings are strings"
  (let ((my-string "do or do not"))
-   (should (eq ___ (typep my-string 'string)))
+   (should (eq t (typep my-string 'string)))
    "use `stringp' to check whether a value is a string"
-   (should (eq ___ (stringp my-string)))
-   (should (eq ___ (stringp '(a list))))
+   (should (eq t (stringp my-string)))
+   (should (eq nil (stringp '(a list))))
    "strings are the same thing as vectors of characters"
    (should (eq (aref "meat" 2) (aref "fiesta" 5)))))
 
