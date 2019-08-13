@@ -23,8 +23,8 @@
     mapcar-and-reduce
     format
     ;; cl-koans
-    cl-loops
-    cl-multiple-values
+    ;; cl-loops
+    ;; cl-multiple-values
     cl-structures
     ;; projects
     triangle-project

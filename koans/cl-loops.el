@@ -75,30 +75,13 @@
 
 
 (elisp-koans/deftest
- elisp-koans/cl-loops-in-skip-by ()
- "Use `by' to specify a custom step function for the list."
- (let* ((letters '(:a :b :c :d :e :f))
-        (loop-result-in
-         (cl-loop for letter in letters collect letter))
-        (loop-result-in-cdr
-         (cl-loop for letter in letters by #'cdr collect letter))
-        (loop-result-in-cddr
-         (cl-loop for letter in letters by #'cddr collect letter))
-        (loop-result-in-cdddr
-         (cl-loop for letter in letters by #'cdddr collect letter)))
-   (should (equal ___ loop-result-in))
-   (should (equal ___ loop-result-in-cdr))
-   (should (equal ___ loop-result-in-cddr))
-   (should (equal ___ loop-result-in-cdddr))))
 
-
-(elisp-koans/deftest
  elisp-koans/cl-loops-across-vector ()
  "`cl-loop' works across vectors."
  (let* ((my-vector (vector 0 1 2 3 4))
         (loop-result
          (cl-loop for val across my-vector collect val)))
-   (should (equal ___ loop-result))))
+   (should (equal '(0 1 2 3 4) loop-result))))
 
 
 (defvar books-to-heros)
@@ -107,18 +90,6 @@
 (setf (gethash "Where The Wild Things Are" books-to-heros) "Max")
 (setf (gethash "The Wizard Of Oz" books-to-heros) "Dorothy")
 (setf (gethash "The Great Gatsby" books-to-heros) "James Gatz")
-
-
-(elisp-koans/deftest
- elisp-koans/cl-loops-over-hash-tables ()
- "`cl-loop' iterates over keys when passed a hash table.
-`using' allow you to specify the loop's access function."
- (let* ((pairs-in-table
-         (cl-loop for k being the hash-keys in books-to-heros
-                  using (hash-value v)
-                  collect (list k v))))
-   (should (eq ___ (length pairs-in-table)))
-   (should (eq ___ (find '("The Hobbit" "Bilbo")) pairs-in-table :test #'equal))))
 
 
 (elisp-koans/deftest
